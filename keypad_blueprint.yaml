@@ -19,10 +19,8 @@ blueprint:
           integration: alarmo
     legacy:
       name: Legacy Mode
-      description: Toggle this only if you are having issues with the timer on your Ring panel not showing during arming/entry delay
-      constant:
-        value: true
-        label: Enabled
+      description: Turn this on only if you are having issues with the timer on your Ring panel not showing during arming/entry delay
+      boolean:
     selected_action_police:
       name: Selected Action Police
       description: Select the action for Police Button
