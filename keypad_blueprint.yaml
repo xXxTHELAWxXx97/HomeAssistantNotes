@@ -20,8 +20,10 @@ blueprint:
     legacy:
       name: Legacy Mode
       description: Turn this on only if you are having issues with the timer on your Ring panel not showing during arming/entry delay
-      boolean:
-      default: "false"
+      selector:
+        constant:
+          value: false
+          label: Disabled
     selected_action_police:
       name: Selected Action Police
       description: Select the action for Police Button
