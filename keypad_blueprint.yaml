@@ -42,7 +42,8 @@ blueprint:
         action:
 variables:
   alarm: !input alarm
-  delay: "{{ state_attr(alarm, 'delay') }}"
+  legacy: !input legacy
+  legacy_delay: "{{ state_attr(alarm, 'delay') }}"
   formatted_delay: >
     {% set delay = state_attr(alarm, 'delay') %}
     {% set total_seconds = delay if delay is not none else 0 %}
@@ -276,7 +277,7 @@ action:
             endpoint: "0"
             property: "18"
             property_key: "{{ '7' if legacy == 'true' else timeout }}"
-            value: "{{ delay if legacy == 'true' else formatted_delay }}"
+            value: "{{ legacy_delay if legacy == 'true' else formatted_delay }}"
     - conditions:
         - condition: trigger
           id: alarm_pending
@@ -289,7 +290,7 @@ action:
             endpoint: "0"
             property: "17"
             property_key: "{{ '7' if legacy == 'true' else timeout }}"
-            value: "{{ delay if legacy == 'true' else formatted_delay }}"
+            value: "{{ legacy_delay if legacy == 'true' else formatted_delay }}"
     - conditions:
         - condition: trigger
           id: alarm_triggered
