@@ -42,7 +42,7 @@ blueprint:
         action:
 variables:
   alarm: !input alarm
-  delay: "{{ state_attr(alarm, ''delay'') }}"
+  delay: "{{ state_attr(alarm, 'delay') }}"
   formatted_delay: >
     {% set delay = state_attr(alarm, 'delay') %}
     {% set total_seconds = delay if delay is not none else 0 %}
